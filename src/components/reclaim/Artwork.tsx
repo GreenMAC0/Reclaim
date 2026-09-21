@@ -11,6 +11,7 @@ type Props = {
 };
 
 export function Artwork({ contributions, className, shared = false }: Props) {
+  const [scene, setScene] = useState(false);
   const [replay, setReplay] = useState(0);
   const index = Math.max(0, stageIndexFor(contributions));
   const stage = ARTWORK_STAGES[index];
@@ -29,7 +30,22 @@ export function Artwork({ contributions, className, shared = false }: Props) {
           <span>Space → Mother Earth</span>
         </header>
       )}
-      <div className="artist-image-area">
+      <div className="canvas-view-switch" role="group" aria-label="Choose artwork or game scene">
+        <button type="button" aria-pressed={!scene} onClick={() => setScene(false)}>Community artwork</button>
+        <button type="button" aria-pressed={scene} onClick={() => setScene(true)}>Explore the game scene</button>
+      </div>
+      {scene ? <div className="game-scene">
+        <video controls playsInline preload="none" poster="/artwork/gameplay-poster.png" aria-label="Original ReClaim game scene, recorded gameplay">
+          <source src="/artwork/gameplay.mp4" type="video/mp4" />
+          Your browser does not support this video.
+        </video>
+        <div className="game-scene-caption">
+          <h3>Step inside the ReClaim world</h3>
+          <p>Original art + actual gameplay</p>
+          <p>Play the clip to explore the custom scene. Your drop-offs advance the shared artwork below.</p>
+          <small>Recorded gameplay preview · movement controls shown in the clip are not interactive.</small>
+        </div>
+      </div> : <div className="artist-image-area">
         <picture key={`${stage.id}-${replay}`}>
           <source media="(prefers-reduced-motion: reduce)" srcSet={stage.image} />
           <img
@@ -39,7 +55,7 @@ export function Artwork({ contributions, className, shared = false }: Props) {
             height={1620}
           />
         </picture>
-      </div>
+      </div>}
       <figcaption className="px-5 py-3">
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-display text-lg font-semibold">{stage.name}</h2>
