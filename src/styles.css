@@ -561,3 +561,9 @@
 .scene-room img { display:block; width:100%; max-height:65vh; object-fit:contain; }
 .scene-room button { position:absolute; min-height:48px; padding:10px 14px; border:2px solid white; border-radius:14px; background:#143f36; color:white; font-weight:700; box-shadow:0 4px 14px #0008; }
 .scene-room button:focus-visible { outline:4px solid #ffc36d; }
+
+.movable-room { aspect-ratio: 1.08; background: url('/artwork/room-character.png') left center / 202% 100% no-repeat; overflow:hidden; }
+.moving-character { position:absolute; width:28%; aspect-ratio:1.08; background:url('/artwork/room-character.png') right center / 200% 100% no-repeat; transform:translate(-50%,-90%); transition:left .12s linear,top .12s linear; pointer-events:none; }
+.movement-pad { display:flex; gap:10px; justify-content:center; padding:16px; }
+.movement-pad button { min-width:54px; min-height:54px; background:#71e2bd; color:#143f36; border-radius:12px; font-size:26px; font-weight:700; }
+@media(prefers-reduced-motion:reduce){.moving-character{transition:none;}}
