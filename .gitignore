@@ -37,3 +37,10 @@ dist-ssr
 !.env.example
 *.pem
 *.key
+
+# Unity generated files
+unity/**/Library/
+unity/**/Temp/
+unity/**/Logs/
+unity/**/Obj/
+unity/**/UserSettings/

@@ -1,3 +1,4 @@
+import { SceneSimulation } from "./SceneSimulation";
 import { useState } from "react";
 import { ARTWORK_STAGES } from "@/lib/reclaim/data";
 import { artworkProgress, stageIndexFor } from "@/lib/reclaim/progression";
@@ -34,18 +35,7 @@ export function Artwork({ contributions, className, shared = false }: Props) {
         <button type="button" aria-pressed={!scene} onClick={() => setScene(false)}>Community artwork</button>
         <button type="button" aria-pressed={scene} onClick={() => setScene(true)}>Explore the game scene</button>
       </div>
-      {scene ? <div className="game-scene">
-        <video controls playsInline preload="none" poster="/artwork/gameplay-poster.png" aria-label="Original ReClaim game scene, recorded gameplay">
-          <source src="/artwork/gameplay.mp4" type="video/mp4" />
-          Your browser does not support this video.
-        </video>
-        <div className="game-scene-caption">
-          <h3>Step inside the ReClaim world</h3>
-          <p>Original art + actual gameplay</p>
-          <p>Play the clip to explore the custom scene. Your drop-offs advance the shared artwork below.</p>
-          <small>Recorded gameplay preview · movement controls shown in the clip are not interactive.</small>
-        </div>
-      </div> : <div className="artist-image-area">
+      {scene ? <SceneSimulation /> : <div className="artist-image-area">
         <picture key={`${stage.id}-${replay}`}>
           <source media="(prefers-reduced-motion: reduce)" srcSet={stage.image} />
           <img
