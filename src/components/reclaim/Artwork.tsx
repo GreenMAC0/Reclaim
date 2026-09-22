@@ -1,4 +1,3 @@
-import { SceneSimulation } from "./SceneSimulation";
 import { useState } from "react";
 import { ARTWORK_STAGES } from "@/lib/reclaim/data";
 import { artworkProgress, stageIndexFor } from "@/lib/reclaim/progression";
@@ -12,7 +11,6 @@ type Props = {
 };
 
 export function Artwork({ contributions, className, shared = false }: Props) {
-  const [scene, setScene] = useState(false);
   const [replay, setReplay] = useState(0);
   const index = Math.max(0, stageIndexFor(contributions));
   const stage = ARTWORK_STAGES[index];
@@ -31,11 +29,7 @@ export function Artwork({ contributions, className, shared = false }: Props) {
           <span>Space → Mother Earth</span>
         </header>
       )}
-      <div className="canvas-view-switch" role="group" aria-label="Choose artwork or game scene">
-        <button type="button" aria-pressed={!scene} onClick={() => setScene(false)}>Community artwork</button>
-        <button type="button" aria-pressed={scene} onClick={() => setScene(true)}>Explore the game scene</button>
-      </div>
-      {scene ? <SceneSimulation /> : <div className="artist-image-area">
+      <div className="artist-image-area">
         <picture key={`${stage.id}-${replay}`}>
           <source media="(prefers-reduced-motion: reduce)" srcSet={stage.image} />
           <img
@@ -45,7 +39,7 @@ export function Artwork({ contributions, className, shared = false }: Props) {
             height={1620}
           />
         </picture>
-      </div>}
+      </div>
       <figcaption className="px-5 py-3">
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-display text-lg font-semibold">{stage.name}</h2>

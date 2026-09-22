@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import {
+  Gamepad2,
   Leaf,
   MapPin,
   Compass,
@@ -17,6 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NeighborhoodMap } from "@/components/reclaim/NeighborhoodMap";
+import { SceneSimulation } from "@/components/reclaim/SceneSimulation";
 import { Artwork } from "@/components/reclaim/Artwork";
 import {
   ARTWORK_STAGES,
@@ -53,7 +55,7 @@ export const Route = createFileRoute("/app")({
   component: PhoneApp,
 });
 
-type Tab = "explore" | "challenges" | "journey" | "loop";
+type Tab = "play" | "explore" | "challenges" | "journey" | "loop";
 
 function PhoneApp() {
   const [tab, setTab] = useState<Tab>("explore");
@@ -96,7 +98,13 @@ function PhoneApp() {
         </p>
       ) : (
         <>
-          {tab === "explore" && <ExploreTab onLoop={() => setTab("loop")} />}
+          {tab === "explore" && <>
+            <button onClick={() => setTab("play")} className="mt-5 flex min-h-16 items-center gap-3 rounded-2xl bg-[#143f36] px-5 py-4 text-left text-white">
+              <Gamepad2 className="size-7 shrink-0" /><span><strong className="block text-lg">Explore your ReClaim world</strong><span className="text-sm text-[#bde9df]">Enter the game scene →</span></span>
+            </button>
+            <ExploreTab onLoop={() => setTab("loop")} />
+          </>}
+          {tab === "play" && <div className="mt-5 overflow-hidden rounded-3xl bg-[#080d19] text-white"><SceneSimulation /></div>}
           {tab === "challenges" && (
             <ChallengesTab
               onExplore={() => setTab("explore")}
@@ -124,6 +132,7 @@ function PhoneApp() {
         >
           Explore
         </TabButton>
+        <TabButton active={tab === "play"} onClick={() => setTab("play")} icon={<Gamepad2 className="size-5" />}>Play</TabButton>
         <TabButton
           active={tab === "challenges"}
           onClick={() => setTab("challenges")}

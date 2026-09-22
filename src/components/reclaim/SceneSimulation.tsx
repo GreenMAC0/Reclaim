@@ -15,7 +15,7 @@ export function SceneSimulation() {
     <div className="game-scene-caption" aria-live="polite">
       <h3>{place}</h3>
       {place === "Welcome" && <p>Choose a spot in the room to explore, learn and see your community’s progress.</p>}
-      {place === "Art gallery" && <p>Your community has {state.artworkCount} demo contributions toward the shared artwork. Use Community artwork above to see the current reveal.</p>}
+      {place === "Art gallery" && <p>Your community has {state.artworkCount} demo contributions toward the shared artwork. Open Journey to see the current artwork reveal.</p>}
       {place === "Garden" && <p>Food scraps can support new growth after collection and composting. This room is a virtual reward, not a record of real compost deliveries.</p>}
       {place === "Sorting practice" && <><p>Does a plastic cup belong in this station’s organics?</p><div className="canvas-view-switch"><button onClick={() => setAnswer("Try again. Plastic cups stay out of this organics stream.")}>Yes</button><button onClick={() => {setAnswer("Correct! Keep the cup out. Check station guidance for your next item.");learnRule("Plastic cup");}}>No</button></div><p>{answer}</p></>}
       <small>Interactive browser simulation using your original scene. Practice does not count as a drop-off. The character and arrows in the background are part of the artwork.</small>
