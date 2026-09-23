@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NeighborhoodMap } from "@/components/reclaim/NeighborhoodMap";
-import { SceneSimulation } from "@/components/reclaim/SceneSimulation";
+import { DigitalTwin } from "@/components/reclaim/DigitalTwin";
 import { Artwork } from "@/components/reclaim/Artwork";
 import {
   ARTWORK_STAGES,
@@ -100,11 +100,11 @@ function PhoneApp() {
         <>
           {tab === "explore" && <>
             <button onClick={() => setTab("play")} className="mt-5 flex min-h-16 items-center gap-3 rounded-2xl bg-[#143f36] px-5 py-4 text-left text-white">
-              <Gamepad2 className="size-7 shrink-0" /><span><strong className="block text-lg">Explore your ReClaim world</strong><span className="text-sm text-[#bde9df]">Enter the game scene →</span></span>
+              <Gamepad2 className="size-7 shrink-0" /><span><strong className="block text-lg">Explore your ReClaim world</strong><span className="text-sm text-[#bde9df]">Open your digital twin →</span></span>
             </button>
             <ExploreTab onLoop={() => setTab("loop")} />
           </>}
-          {tab === "play" && <div className="mt-5 overflow-hidden rounded-3xl bg-[#080d19] text-white"><SceneSimulation /></div>}
+          {tab === "play" && <DigitalTwin />}
           {tab === "challenges" && (
             <ChallengesTab
               onExplore={() => setTab("explore")}
@@ -132,7 +132,7 @@ function PhoneApp() {
         >
           Explore
         </TabButton>
-        <TabButton active={tab === "play"} onClick={() => setTab("play")} icon={<Gamepad2 className="size-5" />}>Play</TabButton>
+        <TabButton active={tab === "play"} onClick={() => setTab("play")} icon={<Gamepad2 className="size-5" />}>Twin</TabButton>
         <TabButton
           active={tab === "challenges"}
           onClick={() => setTab("challenges")}
