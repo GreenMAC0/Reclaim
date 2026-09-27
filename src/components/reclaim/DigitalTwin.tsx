@@ -52,7 +52,7 @@ export function DigitalTwin() {
         </div>
         <h2 className="text-xl font-bold">{state.myDrops} personal demo {state.myDrops === 1 ? "drop" : "drops"}</h2>
         <p className="mt-2 text-sm">{next ? `${next.at - state.myDrops} more to unlock “${next.name}”.` : "Your seedling, garden and community art are unlocked."} Virtual milestones use your simulated personal drops on this device.</p>
-        <Link to="/" onClick={startVisit} className="mt-4 flex min-h-12 items-center justify-center rounded-xl bg-[#143f36] px-3 font-bold text-white">Start a simulated station visit</Link>
+        <Link to="/station" onClick={startVisit} className="mt-4 flex min-h-12 items-center justify-center rounded-xl bg-[#143f36] px-3 font-bold text-white">Start a simulated station visit</Link>
       </div>
       <div className="rounded-2xl border border-border bg-white p-5"><h3 className="font-bold">Practice. Participate. See growth.</h3><p className="mt-2 text-sm leading-relaxed">Sorting practice gives immediate feedback. Repeated station visits build a routine. Visible virtual growth makes progress easier to recognize and gives you a reason to return.</p><p className="mt-3 text-xs text-muted-foreground">Practice never counts as a drop. Virtual gardens and rewards do not represent real planting, compost delivery or measured environmental impact.</p></div>
     </>}

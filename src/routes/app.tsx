@@ -77,7 +77,7 @@ function PhoneApp() {
           </div>
         </div>
         <Link
-          to="/"
+          to="/station"
           title="Open the shared station"
           aria-label="Open the shared station"
           className="flex min-h-10 shrink-0 items-center justify-center gap-1.5 rounded-full bg-card px-3 text-[10px] font-semibold text-primary ring-1 ring-border"
@@ -342,7 +342,7 @@ function ExploreTab({ onLoop }: { onLoop: () => void }) {
             </p>
             {selected.id === "st-04" && (
               <Link
-                to="/"
+                to="/station"
                 onClick={startVisit}
                 className="mt-4 flex min-h-14 items-center justify-center rounded-2xl bg-primary px-4 text-center font-semibold text-primary-foreground"
               >

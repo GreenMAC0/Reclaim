@@ -74,7 +74,7 @@ function Operator() {
             <RotateCcw className="size-4" /> Reset demo
           </Button>
           <Link
-            to="/"
+            to="/station"
             className="flex items-center gap-2 rounded-full bg-card px-5 py-2.5 text-sm ring-1 ring-border"
           >
             <ArrowLeft className="size-4" /> Station

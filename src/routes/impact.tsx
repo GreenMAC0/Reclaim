@@ -53,7 +53,7 @@ function Impact() {
           </div>
         </div>
         <Link
-          to="/"
+          to="/station"
           className="flex shrink-0 items-center gap-2 rounded-full bg-card px-3 py-2 text-xs ring-1 ring-border sm:px-5 sm:py-2.5 sm:text-sm"
         >
           <ArrowLeft className="size-4" /> <span className="hidden sm:inline">Back to station</span>

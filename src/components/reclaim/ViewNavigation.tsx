@@ -2,7 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Monitor, Smartphone, SlidersHorizontal, Sprout } from "lucide-react";
 
 const views = [
-  { to: "/", label: "Station", detail: "Drop off & watch art grow", icon: Monitor },
+  { to: "/", label: "Play home", detail: "Enter your playable world", icon: Smartphone },
+  { to: "/station", label: "Station", detail: "Drop off & watch art grow", icon: Monitor },
   { to: "/app", label: "Personal companion", detail: "Explore & track your progress", icon: Smartphone },
   { to: "/operator", label: "Operator dashboard", detail: "Manage the station", icon: SlidersHorizontal },
   { to: "/impact", label: "Community impact", detail: "See the local results", icon: Sprout },

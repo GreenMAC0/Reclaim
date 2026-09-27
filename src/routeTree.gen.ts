@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as OperatorRouteImport } from './routes/operator'
+import { Route as StationRouteImport } from './routes/station'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +35,25 @@ const OperatorRoute = OperatorRouteImport.update({
   path: '/operator',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StationRoute = StationRouteImport.update({
+  id: '/station',
+  path: '/station',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRoute
   '/impact': typeof ImpactRoute
   '/operator': typeof OperatorRoute
+  '/station': typeof StationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRoute
   '/impact': typeof ImpactRoute
   '/operator': typeof OperatorRoute
+  '/station': typeof StationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/app': typeof AppRoute
   '/impact': typeof ImpactRoute
   '/operator': typeof OperatorRoute
+  '/station': typeof StationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/impact' | '/operator'
+  fullPaths: '/' | '/app' | '/impact' | '/operator' | '/station'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/impact' | '/operator'
-  id: '__root__' | '/' | '/app' | '/impact' | '/operator'
+  to: '/' | '/app' | '/impact' | '/operator' | '/station'
+  id: '__root__' | '/' | '/app' | '/impact' | '/operator' | '/station'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +76,7 @@ export interface RootRouteChildren {
   AppRoute: typeof AppRoute
   ImpactRoute: typeof ImpactRoute
   OperatorRoute: typeof OperatorRoute
+  StationRoute: typeof StationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OperatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/station': {
+      id: '/station'
+      path: '/station'
+      fullPath: '/station'
+      preLoaderRoute: typeof StationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppRoute: AppRoute,
   ImpactRoute: ImpactRoute,
   OperatorRoute: OperatorRoute,
+  StationRoute: StationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

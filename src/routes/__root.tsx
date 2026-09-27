@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -135,9 +136,14 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ReclaimProvider>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <ViewNavigation />
+        <NonHomeNavigation />
         <Outlet />
       </ReclaimProvider>
     </QueryClientProvider>
   );
+}
+
+function NonHomeNavigation() {
+ const home = useRouterState({ select: state => state.location.pathname === "/" });
+ return home ? null : <ViewNavigation />;
 }
