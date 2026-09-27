@@ -58,7 +58,7 @@ export const Route = createFileRoute("/app")({
 type Tab = "play" | "explore" | "challenges" | "journey" | "loop";
 
 function PhoneApp() {
-  const [tab, setTab] = useState<Tab>("explore");
+  const [tab, setTab] = useState<Tab>("play");
   const [practice, setPractice] = useState(false);
   const { state, hydrated, learnRule } = useReclaim();
 

@@ -13,7 +13,7 @@ const milestones = [
 ];
 
 export function DigitalTwin() {
-  const [mode, setMode] = useState<"neighborhood" | "play">("neighborhood");
+  const [mode, setMode] = useState<"neighborhood" | "play">("play");
   const [selectedId, setSelectedId] = useState("st-04");
   const { state, startVisit } = useReclaim();
   const selected = PLACES.find(place => place.id === selectedId)!;
