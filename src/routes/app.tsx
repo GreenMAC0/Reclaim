@@ -98,12 +98,10 @@ function PhoneApp() {
         </p>
       ) : (
         <>
-          {tab === "explore" && <>
-            <button onClick={() => setTab("play")} className="mt-5 flex min-h-16 items-center gap-3 rounded-2xl bg-[#143f36] px-5 py-4 text-left text-white">
-              <Gamepad2 className="size-7 shrink-0" /><span><strong className="block text-lg">Explore your ReClaim world</strong><span className="text-sm text-[#bde9df]">Open your digital twin →</span></span>
+          <button aria-pressed={tab === "play"} onClick={() => setTab("play")} className="mt-5 flex w-full min-h-16 items-center gap-3 rounded-2xl bg-[#143f36] px-5 py-4 text-left text-white">
+              <Gamepad2 className="size-7 shrink-0" /><span><strong className="block text-lg">Digital Twin</strong><span className="text-sm text-[#bde9df]">Neighborhood map + playable world →</span></span>
             </button>
-            <ExploreTab onLoop={() => setTab("loop")} />
-          </>}
+          {tab === "explore" && <ExploreTab onLoop={() => setTab("loop")} />}
           {tab === "play" && <DigitalTwin />}
           {tab === "challenges" && (
             <ChallengesTab

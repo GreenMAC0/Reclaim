@@ -44,3 +44,11 @@ unity/**/Temp/
 unity/**/Logs/
 unity/**/Obj/
 unity/**/UserSettings/
+
+# Unity local builds and tooling caches
+unity/**/Build/
+unity/**/Builds/
+unity/**/MemoryCaptures/
+unity/**/.vs/
+unity/**/.idea/
+unity/**/obj/

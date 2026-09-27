@@ -1,0 +1,7 @@
+Improve the existing ReClaim prototype in Assets/ReClaim/ReclaimNeighborhood.unity. Inspect ReclaimRoom.cs and the original art in Assets/ReClaim/Resources first. Preserve the ReClaim characters and room design.
+
+First task only: replace the OnGUI presentation with editable 2D scene objects and a responsive Canvas. Preserve character movement, Art gallery, Garden and Sorting practice interactions. Separate environment and character using the existing composite image: environment left half, character right half. Do not generate replacement art or use paid assets.
+
+The product connects everyday food-scrap participation to visible neighborhood transformation. The real neighborhood layer will track verified station collections, compost processing and garden deliveries. This playable layer teaches sorting habits through immediate feedback and rewards repeat participation with virtual growth and shared art. Keep virtual rewards distinct from verified physical impact.
+
+Keep SetContributions(string) on a GameObject named ReclaimRoom for the future browser bridge. Practice must never increment drop counts. Do not claim a backend or verified delivery exists. Target touch controls and keyboard, portrait mobile web first. Explain your changes and test Play mode before adding features. Ask before using generators that consume credits.
