@@ -71,6 +71,7 @@ export function ReclaimProvider({ children }: { children: ReactNode }) {
       state,
       hydrated,
       recordDisposal,
+      advanceEnergyMission: () => { commit({ type: "energy-next" }); },
       startVisit: () => {
         commit({ type: "start-visit" });
       },

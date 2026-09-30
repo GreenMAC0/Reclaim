@@ -272,3 +272,29 @@ describe("connected visit", () => {
     expect(summarizeDemo(state).myDrops).toBe(0);
   });
 });
+
+describe("energy mission", () => {
+  test("requires sorting and a new personal demo drop, then saves one reward", () => {
+    let state = reduceDemo(createDemo(), { type: "disposal", event: event("old", "resident") });
+    expect(state.energyMissionStep).toBe(0);
+    state = reduceDemo(state, { type: "energy-next" });
+    expect(state.energyMissionStep).toBe(1);
+    expect(reduceDemo(state, { type: "energy-next" })).toEqual(state);
+    state = reduceDemo(state, { type: "disposal", event: event("anonymous") });
+    expect(state.energyMissionStep).toBe(1);
+    state = reduceDemo(state, { type: "disposal", event: event("personal", "resident") });
+    expect(state.energyMissionStep).toBe(2);
+    const drops = summarizeDemo(state).myDrops;
+    for (let i = 0; i < 8; i++) state = reduceDemo(state, { type: "energy-next" });
+    expect(state.energyMissionStep).toBe(5);
+    expect(summarizeDemo(state).myDrops).toBe(drops);
+    expect(restoreDemo(JSON.stringify(state)).energyMissionStep).toBe(5);
+    expect(reduceDemo(state, { type: "reset", scenario: "growing" }).energyMissionStep).toBe(0);
+  });
+  test("existing saved demos migrate without losing participation", () => {
+    const { energyMissionStep, ...legacy } = reduceDemo(createDemo(), { type: "disposal", event: event("saved") });
+    const restored = restoreDemo(JSON.stringify(legacy));
+    expect(restored.energyMissionStep).toBe(0);
+    expect(restored.events).toHaveLength(1);
+  });
+});

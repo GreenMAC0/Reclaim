@@ -28,6 +28,7 @@ const eventSchema = z.object({
 });
 export type ParticipationEvent = z.infer<typeof eventSchema>;
 const persistedSchema = z.object({
+  energyMissionStep: z.number().int().min(0).max(5).default(0),
   activeVisit: z.boolean().default(false),
   version: z.literal(2),
   artworkOffsets: z
@@ -50,6 +51,7 @@ export type PersistedDemo = z.infer<typeof persistedSchema>;
 
 export function createDemo(scenario: DemoScenario = "growing"): PersistedDemo {
   return {
+    energyMissionStep: 0,
     activeVisit: false,
     version: 2,
     artworkOffsets: {},
@@ -73,6 +75,7 @@ export function restoreDemo(raw: string | null): PersistedDemo {
 }
 
 export type DemoAction =
+  | { type: "energy-next" }
   | { type: "start-visit" }
   | { type: "cancel-visit" }
   | { type: "disposal"; event: ParticipationEvent }
@@ -87,6 +90,10 @@ export type DemoAction =
 
 export function reduceDemo(state: PersistedDemo, action: DemoAction): PersistedDemo {
   switch (action.type) {
+    case "energy-next":
+      return state.energyMissionStep === 1 || state.energyMissionStep === 5
+        ? state
+        : { ...state, energyMissionStep: state.energyMissionStep + 1 };
     case "start-visit":
       return { ...state, activeVisit: true };
     case "cancel-visit":
@@ -111,6 +118,8 @@ export function reduceDemo(state: PersistedDemo, action: DemoAction): PersistedD
         ...state,
         activeVisit: action.event.participant === "resident" ? false : state.activeVisit,
         events: [...state.events, action.event],
+        energyMissionStep: state.energyMissionStep === 1 && action.event.participant === "resident"
+          ? 2 : state.energyMissionStep,
         visitedPlaceIds:
           action.event.participant === "resident"
             ? unique([...state.visitedPlaceIds, action.event.stationId])

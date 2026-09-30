@@ -52,3 +52,19 @@ unity/**/MemoryCaptures/
 unity/**/.vs/
 unity/**/.idea/
 unity/**/obj/
+
+# Native build output and local Xcode state
+dist-mobile/
+ios/**/public/
+ios/**/capacitor.config.json
+ios/**/xcuserdata/
+ios/**/build/
+
+# Native SwiftUI local Xcode state
+native/**/xcuserdata/
+native/**/DerivedData/
+
+archive/ReClaimWebWrapper/**/public/
+archive/ReClaimWebWrapper/**/capacitor.config.json
+archive/ReClaimWebWrapper/**/xcuserdata/
+archive/ReClaimWebWrapper/**/build/

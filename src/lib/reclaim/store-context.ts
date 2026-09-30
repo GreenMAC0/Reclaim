@@ -6,6 +6,7 @@ export type { DemoState } from "./model";
 export type ReclaimStore = {
   state: DemoState;
   hydrated: boolean;
+  advanceEnergyMission: () => void;
   startVisit: () => void;
   cancelVisit: () => void;
   recordDisposal: (options?: {

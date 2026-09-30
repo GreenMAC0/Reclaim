@@ -1,11 +1,16 @@
-# ReClaim Waste
+# ReClaim — Apple and Web
 
-Two distinct experiences sharing a local prototype model:
+## Choose the right version
 
-- `/app`: personal iPhone companion, with a blue-and-mint exploration map, place filters, challenges, personal journey and material destinations.
-- `/`: shared tablet station, with a deep blue community canvas, mint disposal guidance and collective progress.
-- `/impact`: community impact reporting.
-- `/operator`: prototype station settings.
+| Version | Location | Purpose |
+| --- | --- | --- |
+| **ReClaim Apple** | [native/ReClaimApple](native/ReClaimApple/README.md) | Active native SwiftUI iPhone/iPad prototype. Open **ReClaimApple.xcodeproj**. |
+| **ReClaim Web** | Repository root: `src/`, `public/` | Existing browser demo, including the 3D energy center; Cloudflare build. |
+| **ReClaim Web Wrapper — archived** | `archive/ReClaimWebWrapper/` | Legacy Capacitor fallback. Not the active Apple app. Its internal `App.xcodeproj` filename is required by Capacitor. |
+
+Apple and Web are separate implementations. Progress is local and is not synchronized between them. The native mission-rule checks pass; full native compilation and simulator launch remain unverified because the automation environment's Swift macro service failed.
+
+Web routes: `/` playable world, `/app` personal companion, `/station` simulated drop station, `/impact` community impact, `/operator` station dashboard.
 
 ## Presenting the artwork
 
@@ -28,7 +33,7 @@ bun install --frozen-lockfile
 bun run dev --host 127.0.0.1 --port 4173
 ```
 
-Open http://127.0.0.1:4173/app for the phone companion, or http://127.0.0.1:4173/ for the shared station.
+Open http://127.0.0.1:4173/app for the phone companion, or http://127.0.0.1:4173/station for the shared station.
 
 ```sh
 bun test
